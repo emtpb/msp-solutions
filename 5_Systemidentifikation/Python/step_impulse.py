@@ -31,13 +31,14 @@ pp.legend(('Impulse response', 'Step response'))
 pp.xlabel('Index $n$')
 pp.grid(True)
 
+norm_freq = np.linspace(0, 2, len(imp))
 pp.figure()
 # Plot absolute value of transfer function by transforming impulse response.
-pp.loglog(abs(np.fft.fft(system(imp))))
+pp.loglog(norm_freq, abs(np.fft.fft(system(imp))))
 pp.xlabel('Normalized frequency $\Omega$')
 pp.ylabel('$|G(\Omega)|$')
 pp.grid(True)
 # Cut to relevant part (~lower quarter).
-pp.xlim(0, 250)
+pp.xlim(0, 0.5)
 
 pp.show()

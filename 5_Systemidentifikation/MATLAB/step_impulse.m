@@ -22,12 +22,12 @@ plot(sys(impulse) ./ max(sys(impulse)));
 legend('Step response', 'Impulse response')
 xlabel('Index {\itn}')
 
+normFreq = linspace(0, 2, numel(impulse));
 figure()
 % Plot absolute value of transfer function by transforming impulse
 % response.
-loglog(abs(fft(sys(impulse))));
+loglog(normFreq, abs(fft(sys(impulse))));
 xlabel('Normalized frequency \Omega')
 ylabel('|{\itG}(\Omega)|')
-grid on
-% Cut to relevant part (~lower quarter)
-xlim([0, 250])
+% Cut to relevant part (~lower quater)
+xlim([0, 0.5])
