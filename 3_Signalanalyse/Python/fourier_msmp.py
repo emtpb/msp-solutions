@@ -42,6 +42,6 @@ def fft_msmp(signal):
         fft = np.zeros(n_max, dtype=complex)
 
         # combine parts of fft
-        fft[k] = transf_even + transf_odd*np.exp(-1j*2*np.pi*n_max*k)
-        fft[int(n_max/2)+k] = transf_even - transf_odd*np.exp(-1j*2*np.pi*n_max*k)
+        fft[k] = transf_even + transf_odd*np.exp(-1j*2*np.pi/n_max*k)
+        fft[int(n_max/2)+k] = transf_even - transf_odd*np.exp(-1j*2*np.pi/n_max*k)
         return fft
