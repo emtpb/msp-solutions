@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import time
-from fourier_msmp import *
+import fourier_msmp as fourier
 
 # define parameters
 f_0 = 1
@@ -22,11 +22,11 @@ plt.ylabel('y')
 # calculate dfts using different algorithms
 # dft_msmp
 t = time.time()
-dft = dft_msmp(y)
+dft = fourier.dft_msmp(y)
 dft_t = time.time()-t
 # fft_msmp
 t = time.time()
-ft = fft_msmp(y)
+ft = fourier.fft_msmp(y)
 ft_t = time.time()-t
 # build in python fft
 t = time.time()
@@ -49,7 +49,7 @@ powers = np.arange(1, power_max+1, dtype=int)
 dft_time = np.zeros(power_max)
 ft_time = np.zeros(power_max)
 ft_python_time = np.zeros(power_max)
-# theoretical run time 
+# theoretical run time
 ideal_dft = np.zeros(power_max)
 ideal_fft = np.zeros(power_max)
 
@@ -59,11 +59,11 @@ for power in powers:
     y = np.cos(2*np.pi*f_0*n/sampl_freq)
     t = time.clock()
     # dft
-    dft = dft_msmp(y)
+    dft = fourier.dft_msmp(y)
     dft_time[power-1] = time.clock() - t
     # fft
     t = time.time()
-    ft = fft_msmp(y)
+    ft = fourier.fft_msmp(y)
     ft_time[power-1] = time.time() - t
     # build in fft
     t = time.time()
