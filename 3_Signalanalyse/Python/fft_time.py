@@ -5,7 +5,7 @@ import fourier_msmp as fourier
 
 # define parameters
 f_0 = 1
-n_max = 2048
+n_max = 16
 number_periodes = 1
 sampl_freq = n_max/number_periodes
 
@@ -35,9 +35,9 @@ ft_python_t = time.time()-t
 
 # plot results from different algorithms
 plt.figure()
-plt.stem(abs(dft), 'r', label='DFT')
-plt.stem(abs(ft), 'g', label='FFT')
-plt.stem(abs(ft_python), 'g', label='build-in FFT')
+plt.stem(abs(dft), markerfmt='ro', label='DFT')
+plt.stem(abs(ft), markerfmt='go', label='FFT')
+plt.stem(abs(ft_python), markerfmt='bo', label='build-in FFT')
 plt.xlim(-0.5, n_max+0.5)
 plt.xlabel('index $k$')
 plt.legend()
@@ -57,10 +57,10 @@ for power in powers:
     n = np.arange(0, 2**power)
 
     y = np.cos(2*np.pi*f_0*n/sampl_freq)
-    t = time.clock()
+    t = time.time()
     # dft
     dft = fourier.dft_msmp(y)
-    dft_time[power-1] = time.clock() - t
+    dft_time[power-1] = time.time() - t
     # fft
     t = time.time()
     ft = fourier.fft_msmp(y)
