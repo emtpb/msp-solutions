@@ -65,7 +65,7 @@ for power in powers:
     t = time.time()
     ft = fourier.fft_msmp(y)
     ft_time[power-1] = time.time() - t
-    # build in fft
+    # built in fft
     t = time.time()
     ft_python = np.fft.fft(y)
     ft_python_time[power-1] = time.time() - t
@@ -83,7 +83,7 @@ plt.legend()
 
 plt.figure()
 plt.plot(2**(np.arange(1, power_max+1)), ideal_dft, 'b', label='DFT ideal')
-plt.plot(2**(np.arange(1, power_max+1)), ideal_fft, 'r', label='DFT ideal')
+plt.plot(2**(np.arange(1, power_max+1)), ideal_fft, 'r', label='FFT ideal')
 plt.xlabel('length of transformed signal $n_{max}$')
 plt.ylabel('computing time $t_{comp}$ / s')
 plt.legend()
@@ -92,6 +92,6 @@ plt.figure()
 plt.plot(2**(np.arange(1, power_max+1)), ft_python_time)
 plt.xlabel('length of transformed signal $n_{max}$')
 plt.ylabel('computing time $t_{comp}$ / s')
-plt.title('buide in FFT')
+plt.title('built in FFT')
 
 plt.show()
